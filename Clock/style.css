@@ -2,27 +2,35 @@
 :root
 {
     --second: 1s;
-    --minitue: calc((var(--second)) * 60);
-    --minitue: calc((var(var(--minitue))) * 60);
+    --minute: calc((var(--second)) * 60);
+    --hour: calc((var(--minute)) * 60);
     --black: black;
     --grey:  grey;
     --shadow:  0 0 0 4px rgba(0,0,0,0.1),
-        inset 0 0 0 3px #EFEFEF,
-        inset 0 0 10px black,
-        0 0 10px rgba(0,0,0);
+    inset 0 0 0 3px #EFEFEF,
+    inset 0 0 10px black,
+    0 0 10px rgba(0,0,0);
     --blue: blue;
+    --yellow: yellow;
+    --dark-blue:  rgb(2, 2, 75);
+    --setTimeHour: 16;
+    --setTimeMinute: 20;
+    --timeShiftHour: calc(var(--setTimeHour) * var(--hour));
+    --timeShiftMinute: calc(var(--setTimeMinute) * var(--minute));
+    
 }
 
 html
 {
-    background: #018DED url(https://unsplash.it/1500/1000?image=881&blur=5);
+    background: #018DED url(https://unsplash.it/1500/1000?image=881&blur=5) bottom center; 
     background-size: cover;
     font-family:Arial, Helvetica, sans-serif;
     text-align: center;
 }
 
 
-body{
+body
+{
     margin: 0;
     min-height: 100vh;
     align-items: center;
@@ -31,25 +39,64 @@ body{
 
 .Clock
 {
-    width:15rem;
-    height:15rem;
-    margin: 100px auto;
-    border: 1.5rem solid white;
+    width: 300px;
+    height: 300px;
     border-radius: 50%;
+    background-color: var(--grey);
+    margin: 250px auto;
     position: relative;
-    padding:  2rem;
-    box-shadow: (var(--shadow));
+    transform: rotate(10deg);
 }
 
-.hand
+
+.Sec
 {
-    left:50%; 
-    top: 50.5%; 
-    position: absolute;
-    width: 10px;
-    height: 150px;
-    background-color: var(--blue);
+    --width:  5px;
+    --height: 140px;
+    --color: var(--yellow) !important;
+} 
+
+.Min
+{
+    --width:  10px;
+    --height: 90px;
+    --color: var(--blue) !important;
 }
+
+.Hour
+{
+    --width: 10px;
+    --height: 50px;
+    --color: var(--dark-blue);
+} 
+
+.hand {
+    position: absolute;
+    border-radius: calc(var(--width) / 2);
+    top: 50%;
+    left: calc(50% - var(--width) / 2);
+    width: var(--width);
+    height: var(--height);
+    background-color: var(--color);
+    transform-origin: center 0;
+}
+
+
+.hand.Sec{
+    animation: rotate steps(60) var(--minute) infinite;
+  }
+ 
+.hand.Min
+{
+    animation: rotate linear var(--hour) infinite;
+    animation-delay: calc(var(--timeShiftMinute) * -1);
+  }
+.hand.Hour {
+    animation: rotate linear calc(var(--hour) * 12) infinite;
+    animation-delay: calc((var(--timeShiftHour) + var(--timeShiftMinute)) * -1);
+  }
+
+
 /* 
 .Clock-face
 {

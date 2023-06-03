@@ -1,12 +1,7 @@
 const Inputs = document.querySelectorAll('.controls input');
 
-
-
-
-
-Inputs.forEach(input => input.addEventListener('mousemove' || 'change', () =>
+Inputs.forEach(input => input.addEventListener( 'change' || 'mousemove', () =>
 {
-   const value = input.dataset.sizing || 10;
-   document.documentElement.style.setProperty(`--${input.name}`, input.value + value);
-   console.log(value); 
+   document.documentElement.style.setProperty(`--${input.name}`,
+         (input.value + (input.dataset.sizing || '' )));
 }))

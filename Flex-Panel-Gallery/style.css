@@ -41,6 +41,7 @@ html {
     justify-content: center;
     display: felx;
     flex-direction: column;
+    /* align-items: center; */
     /* gap: 50px; */
   }
   
@@ -61,13 +62,16 @@ html {
     text-transform: uppercase;
     font-family: 'Amatic SC', cursive;
     text-shadow: 0 0 4px rgba(0, 0, 0, 0.72), 0 0 14px rgba(0, 0, 0, 0.45);
-    font-size: 2em;
-  }
-
-  .panel p:nth-child(2) {
     font-size: 4em;
   }
 
-  .panel.open {
+  .panel p:nth-child(3) {
+    font-size: 4em;
+  }
+
+  .panel.open
+  {
+
+    flex: 5;
     font-size: 40px;
   }

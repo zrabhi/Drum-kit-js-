@@ -1,13 +1,12 @@
  // ## Array Cardio Day 2
-
- const people = [
+const people = [
     { name: 'Wes', year: 1988 },
     { name: 'Kait', year: 1986 },
     { name: 'Irv', year: 1970 },
     { name: 'Lux', year: 2015 }
   ];
 
-  const comments = [
+const comments = [
     { text: 'Love this!', id: 523423 },
     { text: 'Super good', id: 823423 },
     { text: 'You are the best', id: 2039842 },
@@ -33,10 +32,10 @@ console.log(Every);
   // Array.prototype.find()
   // Find is like filter, but instead returns just the one you are looking for
   // find the comment with the ID of 823423
-  const desiredId = 823423;
-  const  idValue = comments.find( person => person.id === desiredId );
+const desiredId = 823423;
+const  idValue = comments.find( person => person.id === desiredId );
   
-  console.log(idValue);
+console.log(idValue);
 
   // Array.prototype.findIndex()
   // Find the comment with this ID

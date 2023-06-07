@@ -31,10 +31,18 @@ const Every = people.every( person => {
 })
 console.log(Every);
   // Array.prototype.find()
-const  idValue = people.find()
   // Find is like filter, but instead returns just the one you are looking for
   // find the comment with the ID of 823423
+  const desiredId = 823423;
+  const  idValue = comments.find( person => person.id === desiredId );
+  
+  console.log(idValue);
 
   // Array.prototype.findIndex()
   // Find the comment with this ID
+  const index = comments.findIndex(comment => comment.id === desiredId )
+  
+  console.log(index);
   // delete the comment with the ID of 823423
+ const deletedIndex = comments.splice(index, 1);
+    console.table(comments);
